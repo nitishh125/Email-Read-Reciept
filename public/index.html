@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Read Receipt — Know When It's Actually Opened</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>SENT ✦ OPENED ✦ TRACKED ✦ NO GUESSING ✦ SENT ✦ OPENED ✦ TRACKED ✦ NO GUESSING ✦</span>
+    <span>SENT ✦ OPENED ✦ TRACKED ✦ NO GUESSING ✦ SENT ✦ OPENED ✦ TRACKED ✦ NO GUESSING ✦</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="logo-block">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </span>
+      <span class="logo-text">READ<br />RECEIPT</span>
+    </div>
+    <h1>KNOW WHEN<br />THEY ACTUALLY<br />OPEN IT.</h1>
+    <p class="hero-sub">A tracking pixel + a live dashboard. No plugins. No guessing games.</p>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="stats">
+    <div class="stat-tag stat-1">
+      <span class="stat-value" id="statSent">0</span>
+      <span class="stat-label">Tracked</span>
+    </div>
+    <div class="stat-tag stat-2">
+      <span class="stat-value" id="statOpened">0</span>
+      <span class="stat-label">Opened</span>
+    </div>
+    <div class="stat-tag stat-3">
+      <span class="stat-value" id="statRate">0%</span>
+      <span class="stat-label">Open Rate</span>
+    </div>
+  </section>
+
+  <section class="panel form-panel">
+    <h2><span class="tag-number">01</span> Track a new email</h2>
+    <form id="createForm" novalidate>
+      <div class="field">
+        <label for="recipient">Recipient email</label>
+        <input type="email" id="recipient" name="recipient" placeholder="recruiter@company.com" required />
+      </div>
+      <div class="field">
+        <label for="subject">Note (optional)</label>
+        <input type="text" id="subject" name="subject" placeholder="Resume follow-up" />
+      </div>
+      <button type="submit" class="btn btn-terracotta">Generate Pixel →</button>
+    </form>
+    <p class="form-error" id="formError" hidden></p>
+  </section>
+
+  <section class="panel snippet-panel" id="snippetCard" hidden>
+    <h2><span class="tag-number">02</span> Embed this in your email</h2>
+    <li class="muted">Click <strong>Compose</strong> in Gmail, then click the <strong>Insert photo</strong> icon (mountain icon) in the bottom toolbar.</li>
+    <li class="muted">Select the <strong>Web Address (URL)</strong> tab.</li>
+    <li class="muted">Paste the copied tracking pixel URL into the box.</li>
+    <li class="muted">Click <strong>Insert</strong>, then send your email as normal.</li>
+    <div class="code-block">
+      <div class="code-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <pre id="snippetCode"></pre>
+    </div>
+    <div class="snippet-actions">
+      <button class="btn btn-outline" id="copySnippet" type="button">Copy Snippet</button>
+      <button class="btn btn-sage" id="simulateOpen" type="button">Simulate Open</button>
+    </div>
+    <p class="hint" id="simulateHint" hidden>✦ Pixel requested — check the table below.</p>
+  </section>
+
+  <section class="panel table-panel">
+    <div class="table-header">
+      <h2><span class="tag-number">03</span> Track Your Emails</h2>
+      <button class="btn btn-ghost small" id="clearAll" type="button">Clear Data</button>
+    </div>
+    <div id="emptyState" class="empty-state">
+      <p>No tracked emails yet. Create one above to get started.</p>
+    </div>
+    <table id="emailTable" hidden>
+      <thead>
+        <tr>
+          <th>Recipient</th>
+          <th>Note</th>
+          <th>Sent</th>
+          <th>Status</th>
+          <th>Opens</th>
+        </tr>
+      </thead>
+      <tbody id="emailTableBody"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>@Team Panda</p>
+</footer>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

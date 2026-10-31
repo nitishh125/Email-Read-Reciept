@@ -1,0 +1,19 @@
+{
+  "name": "email-read-receipt",
+  "version": "1.0.0",
+  "description": "Email read receipt tracker with live dashboard and 1x1 tracking pixel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-server.js"
+  },
+  "keywords": [
+    "email-tracker",
+    "read-receipt"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
